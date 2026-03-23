@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>曾嘉妮 - 天天开心 ❤️</title>
+    <!-- 背景音乐 Baby - 本地 MP3 -->
+    <audio id="bgMusic" loop>
+        <source src="Baby.mp3" type="audio/mpeg">
+    </audio>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* 背景动画粒子 */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        .particle {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 20px;
+            animation: float 15s infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        /* 主容器 */
+        .container {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+        
+        /* 顶部标题 */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .main-title {
+            font-size: 48px;
+            color: #fff;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+            margin-bottom: 10px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        .subtitle {
+            font-size: 24px;
+            color: #fff;
+            opacity: 0.9;
+            letter-spacing: 8px;
+        }
+        
+        @keyframes glow {
+            from {
+                text-shadow: 3px 3px 6px rgba(0,0,0,0.2), 0 0 20px rgba(255,255,255,0.5);
+            }
+            to {
+                text-shadow: 3px 3px 6px rgba(0,0,0,0.2), 0 0 30px rgba(255,255,255,0.8), 0 0 40px rgba(255,182,193,0.6);
+            }
+        }
+        
+        /* 中间内容区 */
+        .content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        /* 左侧 520 */
+        .side-text-left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .number-520 {
+            font-size: 120px;
+            font-weight: bold;
+            color: #ff6b6b;
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.2);
+            animation: pulse 2s ease-in-out infinite;
+            line-height: 1;
+        }
+        
+        .text-520 {
+            font-size: 32px;
+            color: #fff;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a5a);
+            padding: 10px 30px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(255,107,107,0.4);
+        }
+        
+        /* 中间爱心 */
+        .heart-container {
+            position: relative;
+            width: 350px;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .main-heart {
+            font-size: 280px;
+            color: #ff1744;
+            animation: heartbeat 1.5s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(255,23,68,0.6));
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .main-heart:hover {
+            transform: scale(1.1);
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            14% {
+                transform: scale(1.1);
+            }
+            28% {
+                transform: scale(1);
+            }
+            42% {
+                transform: scale(1.1);
+            }
+            70% {
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        /* 右侧 1314 */
+        .side-text-right {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .number-1314 {
+            font-size: 100px;
+            font-weight: bold;
+            color: #9c27b0;
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.2);
+            animation: pulse 2s ease-in-out infinite;
+            animation-delay: 0.5s;
+            line-height: 1;
+        }
+        
+        .text-1314 {
+            font-size: 32px;
+            color: #fff;
+            background: linear-gradient(135deg, #9c27b0, #7b1fa2);
+            padding: 10px 30px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(156,39,176,0.4);
+        }
+        
+        /* 底部祝福语 */
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+        }
+        
+        .blessing {
+            font-size: 36px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+        
+        .blessing span {
+            display: inline-block;
+            animation: bounce 1s ease-in-out infinite;
+        }
+        
+        .blessing span:nth-child(1) { animation-delay: 0s; }
+        .blessing span:nth-child(2) { animation-delay: 0.1s; }
+        .blessing span:nth-child(3) { animation-delay: 0.2s; }
+        .blessing span:nth-child(4) { animation-delay: 0.3s; }
+        .blessing span:nth-child(5) { animation-delay: 0.4s; }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        /* 装饰元素 */
+        .decorations {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+        
+        .corner-heart {
+            position: absolute;
+            font-size: 40px;
+            color: rgba(255,255,255,0.3);
+            animation: twinkle 3s ease-in-out infinite;
+        }
+        
+        .corner-heart:nth-child(1) { top: 20px; left: 20px; }
+        .corner-heart:nth-child(2) { top: 20px; right: 20px; animation-delay: 0.5s; }
+        .corner-heart:nth-child(3) { bottom: 20px; left: 20px; animation-delay: 1s; }
+        .corner-heart:nth-child(4) { bottom: 20px; right: 20px; animation-delay: 1.5s; }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.2); }
+        }
+        
+        /* 照片展示区 */
+        .photo-gallery {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .photo-frame {
+            width: 200px;
+            height: 250px;
+            background: #fff;
+            border-radius: 15px;
+            padding: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transform: rotate(-3deg);
+            transition: transform 0.3s;
+            overflow: hidden;
+        }
+        
+        .photo-frame:nth-child(2) {
+            transform: rotate(3deg);
+        }
+        
+        .photo-frame:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+        
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+        }
+        
+        /* 响应式 */
+        @media (max-width: 900px) {
+            .content {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .main-title {
+                font-size: 32px;
+            }
+            
+            .number-520, .number-1314 {
+                font-size: 60px;
+            }
+            
+            .main-heart {
+                font-size: 180px;
+            }
+            
+            .heart-container {
+                width: 250px;
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 背景粒子 -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- 装饰 -->
+    <div class="decorations">
+        <div class="corner-heart">💕</div>
+        <div class="corner-heart">💖</div>
+        <div class="corner-heart">💗</div>
+        <div class="corner-heart">💝</div>
+    </div>
+    
+    <!-- 主内容 -->
+    <div class="container">
+        <!-- 顶部标题 -->
+        <div class="header">
+            <h1 class="main-title">✨ 曾嘉妮 ✨</h1>
+            <p class="subtitle">天 天 开 心</p>
+        </div>
+        
+        <!-- 中间内容 -->
+        <div class="content">
+            <!-- 左侧 520 -->
+            <div class="side-text-left">
+                <div class="number-520">520</div>
+                <div class="text-520">我爱你</div>
+            </div>
+            
+            <!-- 中间爱心 -->
+            <div class="heart-container">
+                <div class="main-heart" id="mainHeart">❤️</div>
+            </div>
+            
+            <!-- 右侧 1314 -->
+            <div class="side-text-right">
+                <div class="number-1314">1314</div>
+                <div class="text-1314">一生一世</div>
+            </div>
+        </div>
+        
+        <!-- 照片展示 -->
+        <div class="photo-gallery">
+            <div class="photo-frame">
+                <img src=".openclaw/下载.jpg" alt="曾嘉妮的照片1" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'>📷</div>'">
+            </div>
+            <div class="photo-frame">
+                <img src=".openclaw/下载 (1).jpg" alt="曾嘉妮的照片2" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'>📷</div>'">
+            </div>
+        </div>
+        
+        <!-- 底部祝福 -->
+        <div class="footer">
+            <p class="blessing">
+                <span>愿</span>
+                <span>你</span>
+                <span>每</span>
+                <span>天</span>
+                <span>都</span>
+                <span>快</span>
+                <span>乐</span>
+                <span>❤</span>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // 生成背景粒子
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const hearts = ['❤', '💕', '💖', '💗', '💝', '💘', '💓', '💞'];
+            
+            setInterval(() => {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDuration = (Math.random() * 5 + 10) + 's';
+                particle.style.fontSize = (Math.random() * 15 + 15) + 'px';
+                container.appendChild(particle);
+                
+                setTimeout(() => {
+                    particle.remove();
+                }, 15000);
+            }, 300);
+        }
+        
+        // 爱心点击效果
+        document.getElementById('mainHeart').addEventListener('click', function() {
+            // 创建爱心爆炸效果
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.textContent = '❤';
+                    heart.style.position = 'fixed';
+                    heart.style.left = '50%';
+                    heart.style.top = '50%';
+                    heart.style.fontSize = '30px';
+                    heart.style.color = '#ff1744';
+                    heart.style.pointerEvents = 'none';
+                    heart.style.zIndex = '1000';
+                    heart.style.transition = 'all 1s ease-out';
+                    document.body.appendChild(heart);
+                    
+                    const angle = (Math.PI * 2 * i) / 20;
+                    const distance = 200;
+                    const x = Math.cos(angle) * distance;
+                    const y = Math.sin(angle) * distance;
+                    
+                    setTimeout(() => {
+                        heart.style.transform = `translate(${x}px, ${y}px) scale(0)`;
+                        heart.style.opacity = '0';
+                    }, 10);
+                    
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 1000);
+                }, i * 50);
+            }
+        });
+        
+        // 音乐控制 - 使用本地 MP3
+        const bgMusic = document.getElementById('bgMusic');
+        let isPlaying = false;
+        
+        // 创建音乐控制按钮
+        const musicBtn = document.createElement('div');
+        musicBtn.innerHTML = '🎵';
+        musicBtn.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1001;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        `;
+        musicBtn.onclick = function() {
+            if (isPlaying) {
+                bgMusic.pause();
+                this.innerHTML = '🔇';
+                this.style.opacity = '0.6';
+            } else {
+                bgMusic.play().then(() => {
+                    this.innerHTML = '🎵';
+                    this.style.opacity = '1';
+                }).catch(e => {
+                    console.log('播放失败:', e);
+                    alert('点击页面任意位置后再播放音乐');
+                });
+            }
+            isPlaying = !isPlaying;
+        };
+        document.body.appendChild(musicBtn);
+        
+        // 点击页面任意位置开始播放（浏览器策略需要）
+        document.addEventListener('click', function startMusic() {
+            if (!isPlaying) {
+                bgMusic.play().then(() => {
+                    isPlaying = true;
+                    musicBtn.innerHTML = '🎵';
+                }).catch(e => {
+                    console.log('自动播放被阻止:', e);
+                });
+            }
+            document.removeEventListener('click', startMusic);
+        }, { once: true });
+        
+        // 启动
+        createParticles();
+    </script>
+</body>
+</html>
